@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int findDuplicate(vector<int>& nums) {
+        // this code will run and submit but it can be modified bcz of this condition: You must solve the problem without modifying the array nums and using only constant extra space. Here by using an unorederd set we get use extra space 
+        // unordered_set<int> s;
+        // for(int val : nums){
+        //     if(s.find(val) != s.end()){
+        //         return val;
+        //     }
+        //     s.insert(val);
+        // }
+        // return -1;
+
+
+        //Slow - Fast Approach Here the space complexity is O(1)
+        int slow = nums[0] , fast = nums[0];
+        do{
+            slow = nums[slow]; //+1
+            fast = nums[nums[fast]]; //+2
+        }while(slow != fast);
+
+        slow = nums[0];
+        while(slow != fast){
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        return slow; //Here we can return fast also as they point to same value
+    }
+};
