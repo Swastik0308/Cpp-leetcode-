@@ -1,0 +1,12 @@
+class Solution {
+public:
+    int fib(int n) { //TC: O(2^n) it can be optimized by dynamic programming 
+    //the exact TC is O((1.618)^n) it is also called as golden ratio
+    //SC: O(n)
+        if(n ==0 || n ==1){ //It is base case
+            return n;
+        }
+        return fib(n-1) + fib(n-2);
+        
+    }
+};
